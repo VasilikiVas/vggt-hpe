@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "VGGT-HPE"
+message: "If you use this work, please cite the paper below."
+type: software
+authors:
+  - family-names: "Vasileiou"
+    given-names: "Vasiliki"
+  - family-names: "Filntisis"
+    given-names: "Panagiotis P."
+  - family-names: "Maragos"
+    given-names: "Petros"
+  - family-names: "Daniilidis"
+    given-names: "Kostas"
+repository-code: "https://github.com/VasilikiVas/vggt-hpe"
+url: "https://vasilikivas.github.io/VGGT-HPE/"
+preferred-citation:
+  type: paper-conference
+  title: "VGGT-HPE: Reframing Head Pose Estimation as Relative Pose Prediction"
+  authors:
+    - family-names: "Vasileiou"
+      given-names: "Vasiliki"
+    - family-names: "Filntisis"
+      given-names: "Panagiotis P."
+    - family-names: "Maragos"
+      given-names: "Petros"
+    - family-names: "Daniilidis"
+      given-names: "Kostas"
+  year: 2026
+  conference-name: "CVPR Workshop"
+  url: "https://vasilikivas.github.io/assets/pdf/2026127020.pdf"
