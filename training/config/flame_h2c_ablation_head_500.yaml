@@ -1,0 +1,21 @@
+defaults:
+  - flame_h2c_lora_pose_f1_only_500
+  - _self_
+
+exp_name: flame_h2c_ablation_head_500
+
+logging:
+  wandb:
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["ablation", "head-only", "vggt-1b", "relative-h2c", "frame1-pose-only", "focal-ratio"]
+    notes: "Ablation: head-only finetuning on the matched 500-epoch relative H2C recipe"
+
+optim:
+  frozen_module_names:
+    - "aggregator"
+
+model:
+  lora:
+    enabled: False

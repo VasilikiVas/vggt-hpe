@@ -1,0 +1,27 @@
+defaults:
+  - flame_h2c_lora_no_focal_500
+  - _self_
+
+exp_name: flame_h2c_lora_trans_aux_no_focal_rot025_500
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "translation-aux", "no-focal", "rot-0.25"]
+    notes: "Relative H2C for 500 epochs with no focal supervision, auxiliary translation direction/log-norm losses, and reduced rotation weight"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 25
+  visuals_save_dir: "${exp_name}/visualizations"
+
+loss:
+  camera:
+    weight_trans_dir: 0.25
+    weight_trans_log_norm: 0.25
+    weight_rot: 0.25

@@ -1,0 +1,33 @@
+defaults:
+  - flame_h2c_lora
+  - _self_
+
+exp_name: flame_h2c_abs_single_lora
+
+data:
+  train:
+    common_config:
+      fix_img_num: 1
+      img_nums: [1, 1]
+      normalize_to_first_frame: False
+  val:
+    common_config:
+      fix_img_num: 1
+      img_nums: [1, 1]
+      normalize_to_first_frame: False
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    tags: ["lora", "vggt-1b", "quaternion", "absolute-single-frame", "one-view"]
+    notes: "True one-view baseline: single input frame with absolute H2C supervision"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  visuals_save_dir: "${exp_name}/visualizations"
+
+loss:
+  camera:
+    use_focal_ratio: False
+    supervise_frame_idxs: [0]

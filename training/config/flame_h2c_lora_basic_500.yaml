@@ -1,0 +1,23 @@
+defaults:
+  - flame_h2c_lora
+  - _self_
+
+exp_name: flame_h2c_lora_basic_500
+max_epochs: 500
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "baseline", "l1-rot", "l1-trans", "focal-ratio"]
+    notes: "Relative H2C baseline for 500 epochs with L1 translation, L1 rotation, and focal-ratio supervision"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 25
+  visuals_save_dir: "${exp_name}/visualizations"
+

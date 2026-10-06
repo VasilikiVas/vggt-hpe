@@ -1,0 +1,30 @@
+defaults:
+  - flame_h2c_lora_pose_f1_only_500
+  - _self_
+
+exp_name: flame_h2c_lora_pose_f1_only_500_repro_20260519
+max_epochs: 500
+
+logging:
+  log_visuals: False
+  save_visuals_locally: False
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: False
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "frame1-pose-only", "focal-ratio", "published-repro"]
+    notes: "Fresh reproducibility run of the published pose_f1-only setup; visualization saves disabled and checkpoints saved every 5 epochs"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 0
+  visuals_save_dir: "${exp_name}/visualizations"
+
+checkpoint:
+  save_dir: logs/${exp_name}/ckpts
+  save_freq: 5
+  resume_checkpoint_path: /leonardo_work/EUHPC_D32_089/head_pose/final_vggt_head_extra_losses/checkpoints/VGGT-1B/model.pt
+  strict: False

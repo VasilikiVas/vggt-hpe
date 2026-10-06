@@ -1,0 +1,78 @@
+defaults:
+  - flame_h2c_lora_basic_500
+  - _self_
+
+exp_name: flame_h2c_lora_small_view_gap_500
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "small-view-gap", "nearest-view"]
+    notes: "Relative H2C baseline with nearest-view sampling to keep anchor/query gaps small without forcing same-expression pairs"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 25
+  visuals_save_dir: "${exp_name}/visualizations"
+
+data:
+  train:
+    dataset:
+      dataset_configs:
+        - _target_: data.datasets.flame_h2c.FlameH2CDataset
+          split: train
+          root_dirs:
+            - path: /leonardo_work/EUHPC_D32_089/head_pose/blended_in_flames/sample_outputs/dataset_20k_hair_v2
+              name: hair
+            - path: /leonardo_work/EUHPC_D32_089/head_pose/blended_in_flames/sample_outputs/ar_pose_poc_5k
+              name: nohair
+          len_train: 200000
+          same_identity: True
+          same_lighting: True
+          same_expression: False
+          # Pick the closest H2C neighbor among the candidate views for this anchor.
+          nearest_view_pool_size: 1
+          strict_view_constraints: True
+          view_constraint_max_tries: 50
+          # Optional stricter caps if you want an absolute pose threshold:
+          # max_h2c_rot_deg: 20.0
+          # max_h2c_trans: 0.25
+          n_val_identities_per_root: 5
+          split_seed: 42
+          face_crop: True
+          ad_min: 0.4
+          ad_max: 0.6
+          shift_ratio: 0.01
+          bbox_filename: face_bbox.npy
+          color_aug: True
+
+  val:
+    dataset:
+      dataset_configs:
+        - _target_: data.datasets.flame_h2c.FlameH2CDataset
+          split: test
+          root_dirs:
+            - path: /leonardo_work/EUHPC_D32_089/head_pose/blended_in_flames/sample_outputs/dataset_20k_hair_v2
+              name: hair
+            - path: /leonardo_work/EUHPC_D32_089/head_pose/blended_in_flames/sample_outputs/ar_pose_poc_5k
+              name: nohair
+          len_test: 5000
+          same_identity: True
+          same_lighting: True
+          same_expression: False
+          nearest_view_pool_size: 1
+          strict_view_constraints: True
+          view_constraint_max_tries: 50
+          n_val_identities_per_root: 5
+          split_seed: 42
+          face_crop: True
+          ad_min: 0.0
+          ad_max: 0.2
+          shift_ratio: 0.1
+          bbox_filename: face_bbox.npy
+          color_aug: False

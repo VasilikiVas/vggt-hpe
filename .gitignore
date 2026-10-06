@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.orig
+*.rej
+*.swp
+.pytest_cache/
+.venv/
+assets.env
+# Top-level run-output directories only (anchored). Unanchored patterns would
+# shadow packaged evidence, e.g. revision_experiments/**/results/*.csv.
+/cache/
+/checkpoints/
+/logs/
+/outputs/
+/results/
+/runtime/
+/tensorboard/
+/visualizations/
+# These may never exist anywhere in the repo (verify_clean_repos.py forbids them).
+ckpts/
+wandb/
+*.pt
+*.pth
+*.ckpt
+*.pkl

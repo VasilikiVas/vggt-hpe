@@ -1,0 +1,8 @@
+# Upstream VGGT requirements. For the paper pipeline use environment.yml; see INSTALL.md.
+torch==2.3.1
+torchvision==0.18.1
+numpy==1.26.1
+Pillow
+huggingface_hub
+einops
+safetensors

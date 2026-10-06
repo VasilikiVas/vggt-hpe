@@ -1,0 +1,29 @@
+defaults:
+  - flame_h2c_lora
+  - _self_
+
+exp_name: flame_h2c_abs_second_lora
+
+data:
+  train:
+    common_config:
+      normalize_to_first_frame: False
+  val:
+    common_config:
+      normalize_to_first_frame: False
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    tags: ["lora", "vggt-1b", "quaternion", "absolute-second-frame"]
+    notes: "Two-view input, but supervise only frame 2 in absolute H2C coordinates"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  visuals_save_dir: "${exp_name}/visualizations"
+
+loss:
+  camera:
+    use_focal_ratio: False
+    supervise_frame_idxs: [1]

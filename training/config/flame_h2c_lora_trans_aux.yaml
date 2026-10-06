@@ -1,0 +1,28 @@
+defaults:
+  - flame_h2c_lora
+  - _self_
+
+exp_name: flame_h2c_lora_trans_aux
+
+max_epochs: 500
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "translation-aux"]
+    notes: "Relative H2C for 500 epochs with auxiliary translation direction and log-norm losses"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 25
+  visuals_save_dir: "${exp_name}/visualizations"
+
+loss:
+  camera:
+    weight_trans_dir: 0.25
+    weight_trans_log_norm: 0.25

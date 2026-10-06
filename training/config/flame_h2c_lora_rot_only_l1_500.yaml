@@ -1,0 +1,34 @@
+defaults:
+  - flame_h2c_lora
+  - _self_
+
+exp_name: flame_h2c_lora_rot_only_l1_500
+max_epochs: 500
+pose_encoding_type: "quatR"
+
+logging:
+  wandb:
+    enabled: True
+    project: "vggt-h2c"
+    name: ${exp_name}
+    id: ${exp_name}
+    resume: True
+    tags: ["lora", "vggt-1b", "quaternion", "relative-h2c", "rotation-only", "rotation-l1"]
+    notes: "Relative H2C for 500 epochs with quaternion-only camera head and L1 rotation loss"
+    mode: "offline"
+    dir: ${logging.log_dir}/wandb
+  pose_visual_frequency:
+    train: 0
+    val: 25
+  visuals_save_dir: "${exp_name}/visualizations"
+
+loss:
+  camera:
+    weight_trans: 0.0
+    weight_trans_dir: 0.0
+    weight_trans_log_norm: 0.0
+    weight_reproj: 0.0
+    weight_rot: 1.0
+    weight_focal: 0.0
+    use_focal_ratio: False
+    rotation_loss_type: "encoding"
