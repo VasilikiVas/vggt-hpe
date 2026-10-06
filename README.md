@@ -140,7 +140,7 @@ If you use this work, please cite:
 ## Links
 
 - Project page: https://vasilikivas.github.io/VGGT-HPE/
-- Paper PDF: https://vasilikivas.github.io/assets/pdf/2026127020.pdf](https://openaccess.thecvf.com/content/CVPR2026W/ABAW/papers/Vasileiou_VGGT-HPE_Reframing_Head_Pose_Estimation_as_Relative_Pose_Prediction_CVPRW_2026_paper.pdf
+- Paper PDF: https://openaccess.thecvf.com/content/CVPR2026W/ABAW/papers/Vasileiou_VGGT-HPE_Reframing_Head_Pose_Estimation_as_Relative_Pose_Prediction_CVPRW_2026_paper.pdf
 
 ## License & acknowledgements
 
