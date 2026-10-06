@@ -127,11 +127,13 @@ single A100-64GB-class GPU; pairs are sampled online from the synthetic corpus
 If you use this work, please cite:
 
 ```bibtex
-@inproceedings{vasileiou2026vggthpe,
-  title={VGGT-HPE: Reframing Head Pose Estimation as Relative Pose Prediction},
-  author={Vasileiou, Vasiliki and Filntisis, Panagiotis P. and Maragos, Petros and Daniilidis, Kostas},
-  booktitle={CVPR Workshop},
-  year={2026}
+@InProceedings{Vasileiou_2026_CVPR,
+    author    = {Vasileiou, Vasiliki and Filntisis, Panagiotis P and Maragos, Petros and Daniilidis, Kostas},
+    title     = {VGGT-HPE: Reframing Head Pose Estimation as Relative Pose Prediction},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2026},
+    pages     = {5464-5473}
 }
 ```
 
